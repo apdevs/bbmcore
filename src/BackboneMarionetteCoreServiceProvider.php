@@ -28,7 +28,7 @@ class BackboneMarionetteCoreServiceProvider extends ServiceProvider
 
             // Publishing the views.
             $this->publishes([
-                __DIR__.'/../resources/views' => base_path('resources/views/vendor/apdevs'),
+                __DIR__.'/../resources/views' => base_path('resources/views/vendor/bbmcore'),
             ], 'bbmcore.views');
 
             // Publishing assets.
