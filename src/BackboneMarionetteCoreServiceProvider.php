@@ -41,8 +41,17 @@ class BackboneMarionetteCoreServiceProvider extends ServiceProvider
                 __DIR__.'/../resources/assets/js/behaviors.js' => public_path('bbmcore'),
                 __DIR__.'/../resources/assets/js/main.js' => public_path('bbmcore'),
                 __DIR__.'/../resources/assets/js/app.js' => public_path(),
-                __DIR__.'/../resources/assets/backend' => app_path(),
-            ], 'bbmcore.views');
+            ], 'bbmcore.front');
+
+
+            // Publishing assets.
+            $this->publishes([
+                __DIR__.'/../resources/assets/backend/.bowerrc' => app_path(),
+                __DIR__.'/../resources/assets/backend/bower.json' => app_path(),
+                __DIR__.'/../resources/assets/backend/frontinstaller.json' => app_path(),
+                __DIR__.'/../resources/assets/backend/Gruntfile.json' => app_path(),
+                __DIR__.'/../resources/assets/backend/package.json' => app_path(),
+            ], 'bbmcore.node');
 
             // Publishing the translation files.
             /*$this->publishes([

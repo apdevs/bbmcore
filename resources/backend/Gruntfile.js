@@ -1,9 +1,19 @@
+const fs = require('fs');
+const js_dir = 'public/js/';
+const omit_folder = ['libs', 'vendor', 'build'];
+var modules_folder = [];
+
+function getModulesFolder() {
+	return fs.readdirSync(js_dir).filter(function (file) {
+		var is_directory = fs.statSync(js_dir+'/'+file).isDirectory();
+
+		return is_directory && omit_folder.indexOf(file) < 0;
+	});
+}
+
 module.exports = function (grunt) {
 
-	var js_dir = 'public/js/',
-		app_modules = [
-			'core',
-		];
+	var modules_folder = [];
 
 	grunt.initConfig({
 		bbamd_generate: {
@@ -28,7 +38,7 @@ module.exports = function (grunt) {
 					processor: false,
 					prettify: false,
 					processName: function (name) {
-						app_modules.forEach(function (app_module) {
+						modules_folder.forEach(function (app_module) {
 							name = name.replace(js_dir + app_module + '/templates/', app_module + '::');
 						});
 
@@ -59,7 +69,9 @@ module.exports = function (grunt) {
 					'public/js/build/templates.js': (function () {
 						var files = [];
 
-						app_modules.forEach(function (app_module) {
+						modules_folder = getModulesFolder();
+
+						modules_folder.forEach(function (app_module) {
 							files.push(js_dir + app_module + '/templates/**.swig');
 							files.push(js_dir + app_module + '/templates/**/**.swig');
 						});
