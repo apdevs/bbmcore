@@ -1,5 +1,5 @@
 {
-    "name": "apdevs/laravel-bbm-core",
+    "name": "apdevs/bbmcore",
     "description": "Nucleo para front con Backbone-Marionette para Laravel",
     "license": "propietary",
     "authors": [
@@ -8,7 +8,7 @@
             "email": "jmanuel@apdevs.com"
         }
     ],
-    "homepage": "https://gitlab.com/apdevs/apfactura",
+    "homepage": "https://gitlab.com/apdevs/bbmcore",
     "keywords": ["APDevs", "Laravel", "Backbone", "Marionette", "Core"],
     "require": {
         "illuminate/support": "~5"
