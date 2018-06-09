@@ -37,20 +37,20 @@ class BackboneMarionetteCoreServiceProvider extends ServiceProvider
                 __DIR__.'/../resources/assets/theme' => public_path('bbmcore/theme'),
                 __DIR__.'/../resources/assets/js/core' => public_path('js/core'),
                 __DIR__.'/../resources/assets/js/libs' => public_path('bbmcore/libs'),
-                __DIR__.'/../resources/assets/js/admintheme-config.js' => public_path('bbmcore'),
-                __DIR__.'/../resources/assets/js/behaviors.js' => public_path('bbmcore'),
-                __DIR__.'/../resources/assets/js/main.js' => public_path('bbmcore'),
-                __DIR__.'/../resources/assets/js/app.js' => public_path(),
+                __DIR__.'/../resources/assets/js/admintheme-config.js' => public_path('bbmcore/admintheme-config.js'),
+                __DIR__.'/../resources/assets/js/behaviors.js' => public_path('bbmcore/behaviors.js'),
+                __DIR__.'/../resources/assets/js/main.js' => public_path('bbmcore/main.js'),
+                __DIR__.'/../resources/assets/js/app.js' => public_path('js/app.js'),
             ], 'bbmcore.front');
 
 
             // Publishing assets.
             $this->publishes([
-                __DIR__.'/../resources/backend/.bowerrc' => base_path(),
-                __DIR__.'/../resources/backend/bower.json' => base_path(),
-                __DIR__.'/../resources/backend/frontinstaller.js' => base_path(),
-                __DIR__.'/../resources/backend/Gruntfile.js' => base_path(),
-                __DIR__.'/../resources/backend/package.json' => base_path(),
+                __DIR__.'/../resources/backend/.bowerrc' => base_path('.bowerrc'),
+                __DIR__.'/../resources/backend/bower.json' => base_path('bower.json'),
+                __DIR__.'/../resources/backend/frontinstaller.js' => base_path('frontinstaller.js'),
+                __DIR__.'/../resources/backend/Gruntfile.js' => base_path('Gruntfile.js'),
+                __DIR__.'/../resources/backend/package.json' => base_path('package.json'),
             ], 'bbmcore.node');
 
             // Publishing the translation files.

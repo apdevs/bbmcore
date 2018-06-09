@@ -48,7 +48,7 @@
 			"exportar"   : "core/models/exportar",
 			"themecfg"   : "../bbmcore/admintheme-config",
 			"admintheme" : "../bbmcore/theme/js/app",
-			"main"       : "../bbmcore/main"
+			"main"       : "../bbmcore/main",
 			"waves"      : "vendor/Waves/dist/waves.min"
 		},
 		"shim": {
