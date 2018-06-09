@@ -48,8 +48,8 @@ class BackboneMarionetteCoreServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/../resources/backend/.bowerrc' => app_path(),
                 __DIR__.'/../resources/backend/bower.json' => app_path(),
-                __DIR__.'/../resources/backend/frontinstaller.json' => app_path(),
-                __DIR__.'/../resources/backend/Gruntfile.json' => app_path(),
+                __DIR__.'/../resources/backend/frontinstaller.js' => app_path(),
+                __DIR__.'/../resources/backend/Gruntfile.js' => app_path(),
                 __DIR__.'/../resources/backend/package.json' => app_path(),
             ], 'bbmcore.node');
 
