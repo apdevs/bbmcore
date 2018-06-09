@@ -60,7 +60,7 @@ class BackboneMarionetteCoreServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/backbonemarionettecore.php', 'bbmcore');
+        $this->mergeConfigFrom(__DIR__.'/../config/bbmcore.php', 'bbmcore');
 
         // Register the service the package provides.
         $this->app->singleton('bbmcore', function ($app) {
