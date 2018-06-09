@@ -46,11 +46,11 @@ class BackboneMarionetteCoreServiceProvider extends ServiceProvider
 
             // Publishing assets.
             $this->publishes([
-                __DIR__.'/../resources/assets/backend/.bowerrc' => app_path(),
-                __DIR__.'/../resources/assets/backend/bower.json' => app_path(),
-                __DIR__.'/../resources/assets/backend/frontinstaller.json' => app_path(),
-                __DIR__.'/../resources/assets/backend/Gruntfile.json' => app_path(),
-                __DIR__.'/../resources/assets/backend/package.json' => app_path(),
+                __DIR__.'/../resources/backend/.bowerrc' => app_path(),
+                __DIR__.'/../resources/backend/bower.json' => app_path(),
+                __DIR__.'/../resources/backend/frontinstaller.json' => app_path(),
+                __DIR__.'/../resources/backend/Gruntfile.json' => app_path(),
+                __DIR__.'/../resources/backend/package.json' => app_path(),
             ], 'bbmcore.node');
 
             // Publishing the translation files.
