@@ -35,14 +35,19 @@ class BackboneMarionetteCoreServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/../resources/assets/css' => public_path('bbmcore/css'),
                 __DIR__.'/../resources/assets/theme' => public_path('bbmcore/theme'),
-                __DIR__.'/../resources/assets/js/core' => public_path('js/core'),
                 __DIR__.'/../resources/assets/js/libs' => public_path('bbmcore/libs'),
                 __DIR__.'/../resources/assets/js/admintheme-config.js' => public_path('bbmcore/admintheme-config.js'),
                 __DIR__.'/../resources/assets/js/behaviors.js' => public_path('bbmcore/behaviors.js'),
                 __DIR__.'/../resources/assets/js/main.js' => public_path('bbmcore/main.js'),
-                __DIR__.'/../resources/assets/js/app.js' => public_path('js/app.js'),
             ], 'bbmcore.front');
 
+            $this->publishes([
+                __DIR__.'/../resources/assets/js/app.js' => public_path('js/app.js'),
+            ], 'bbmcore.app');
+
+            $this->publishes([
+                __DIR__.'/../resources/assets/js/core' => public_path('js/core'),
+            ], 'bbmcore.core');
 
             // Publishing assets.
             $this->publishes([
