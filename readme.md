@@ -12,7 +12,7 @@ This is where your description should go. Take a look at [contributing.md](contr
 Via Composer
 
 ``` bash
-$ composer require apdevs/laravel-bbm-core
+$ composer require apdevs/bbmcore
 ```
 
 ## Usage
