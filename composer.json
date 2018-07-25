@@ -1,7 +1,7 @@
 {
     "name": "apdevs/bbmcore",
     "description": "Nucleo para front con Backbone-Marionette para Laravel",
-    "license": "propietary",
+    "license": "proprietary",
     "authors": [
         {
             "name": "José Manuel Ruiz Pérez",
