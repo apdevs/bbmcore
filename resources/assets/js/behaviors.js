@@ -106,30 +106,50 @@ define([
 
 	Behaviors.BindigAttributes = Marionette.Behavior.extend({
 		ui: {
-			item: 'input[data-binding]'
+			input: 'input[data-binding]',
+			selects: 'select[data-binding]'
 		},
 
 		events: {
-			'change @ui.item': 'onChangeItem'
+			'change @ui.input': 'onChangeItem',
+			'change @ui.selects': 'onChangeItem'
 		},
 
 		onChangeItem: function (e) {
-			var item = e.currentTarget,
-			    model_name = item.dataset.binding || 'model',
-			    attr_name = item.dataset.attrname || item.name,
-			    item_type = _.get(item, 'attributes.type.value'),
-			    item_value;
+			var input = e.currentTarget,
+			    model_name = input.dataset.binding || 'model',
+			    attr_name = input.dataset.attrname || input.name,
+			    input_type = _.get(input, 'attributes.type.value'),
+			    input_value;
 
-			switch (item_type) {
+			switch (input_type) {
 				case 'checkbox':
-					item_value = item.checked;
+					input_value = input.checked;
 					break;
 				default:
-					item_value = item.value;
+					input_value = input.value;
 			}
 
-			this.view[model_name].set(attr_name, item_value);
-		}
+			this.view[model_name].set(attr_name, input_value);
+		},
+
+		onChangeSelect: function (e) {
+			var input = e.currentTarget,
+			    model_name = input.dataset.binding || 'model',
+			    attr_name = input.dataset.attrname || input.name,
+			    input_type = _.get(input, 'attributes.type.value'),
+			    input_value;
+
+			switch (input_type) {
+				case 'checkbox':
+					input_value = input.checked;
+					break;
+				default:
+					input_value = input.value;
+			}
+
+			this.view[model_name].set(attr_name, input_value);
+		},
 	});
 
 	Behaviors.FetchCalendar = Marionette.Behavior.extend({
