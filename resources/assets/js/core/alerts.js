@@ -33,9 +33,8 @@ define(['underscore', 'messflat'], function (_) {
 		});
 	}
 
-	function getMessages(response) {
-		var errors = response.error;
-			messages = [];
+	function getMessages(errors) {
+		var messages = [];
 
 		if (_.isString(errors))
 		{
@@ -67,7 +66,22 @@ define(['underscore', 'messflat'], function (_) {
 	}
 
 	function alertErrors(response) {
-		_.each(getMessages(response), alertError);
+		var messages = [];
+
+		if (response.errors)
+		{
+			messages = getMessages(response.errors);
+		}
+
+		if (response.message) {
+			messages.push(response.message);
+		}
+		else if (response.error)
+		{
+			messages.push(response.error);
+		}
+
+		_.each(messages, alertError);
 	}
 
 	function alertErrorResponse(response) {
@@ -82,10 +96,7 @@ define(['underscore', 'messflat'], function (_) {
 			response = JSON.parse(response);
 		}
 
-		if (response.error || response.success)
-		{
-			alertErrors(response);
-		}
+		alertErrors(response);
 	}
 
 	function alertErrorModelResponse(model, response) {
