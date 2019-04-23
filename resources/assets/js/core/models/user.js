@@ -1,6 +1,6 @@
 define(['msgBus', 'backbone'], function (bus, Backbone) {
 
-	var admins = ['admin'],
+	var admins = bus.reqres.request('user:admins') || ['admin'],
 		toJSON = Backbone.Model.prototype.toJSON;
 
 	var User = Backbone.Model.extend({
@@ -23,7 +23,7 @@ define(['msgBus', 'backbone'], function (bus, Backbone) {
 
 			json.is_admin = this.isAdmin();
 
-			return json;
+			return bus.reqres.request('user:json', json) || json;
 		}
 	});
 
