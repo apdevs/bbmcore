@@ -1040,8 +1040,11 @@ define(['msgBus', 'jquery', 'underscore', 'marionette', 'oscura'], function (bus
 						title: self.getOption('title'),
 						hide_footer: true
 					}
-				})
-				.setContent(form_view);
+				});
+
+				self.formModal.on('show', function () {
+					this.setContent(form_view);
+				});
 
 				self.listenTo(form_view, 'form:cancel form:model:save', function () {
 					self.formModal.close();
