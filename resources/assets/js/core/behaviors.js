@@ -448,6 +448,7 @@ define(['msgBus', 'jquery', 'underscore', 'marionette', 'oscura'], function (bus
 	Behaviors.Form = Marionette.Behavior.extend({
 		defaults: {
 			autosave: true,
+			saveLocal: false,
 			model: null,
 			attrs: {},
 			options: {},
@@ -516,18 +517,8 @@ define(['msgBus', 'jquery', 'underscore', 'marionette', 'oscura'], function (bus
 
 			this.ui.btnSave.html('<i class="fa fa-spinner fa-spin"></i>');
 
-			xhr.done(function () {
-				var model = self.view.model;
-
-				self.view.trigger('before:form:success', model);
-
-				self.cleanModel();
-				self.view.render();
-
-				if (! self.getOption('silent')) {
-					self.view.trigger('form:model:save', model);
-				}
-			})
+			xhr
+			.done(this.onSaveSuccess.bind(this))
 			.fail(function (response) {
 				bus.alert.response(response);
 
@@ -538,7 +529,29 @@ define(['msgBus', 'jquery', 'underscore', 'marionette', 'oscura'], function (bus
 			});
 		},
 
+		onSaveSuccess: function () {
+			var model = this.view.model;
+
+			this.view.trigger('before:form:success', model);
+
+			this.cleanModel();
+			this.view.render();
+
+			if (! this.getOption('silent')) {
+				this.view.trigger('form:model:save', model);
+			}
+		},
+
 		saveModel: function (data) {
+			if (! this.getOption('saveLocal')) {
+				return this._saveModel(data);
+			}
+
+			this.view.model.set(data);
+			this.onSaveSuccess();
+		},
+
+		_saveModel: function (data) {
 			var self = this;
 
 			var xhr = this.view.model.save(data, {
