@@ -1,11 +1,11 @@
 {
-  "name": "laravel-bbmcore",
+  "name": "apdevs/bbmcore",
   "description": "Plantilla para proyetos con tema MaterialAdmin.",
   "main": "",
   "authors": [
     "José Manuel Ruiz Pérez"
   ],
-  "license": "EULA",
+  "license": "proprietary",
   "moduleType": [
     "amd"
   ],
@@ -41,9 +41,9 @@
     "jquery-ui": "^1.11.4",
     "moment": "^2.14.1",
     "bootstrap-daterangepicker": "https://github.com/dangrossman/bootstrap-daterangepicker.git#^2.1.24",
-    "Chart.js": "chartjs#^2.1.6",
+    "chartjs": "#^2.1.6",
     "animate.css": "^3.5.2",
-    "Flot": "flot#^0.8.3",
+    "flot": "#^0.8.3",
     "flot.curvedlines": "^1.1.1",
     "eonasdan-bootstrap-datetimepicker": "^4.17.45"
   },
