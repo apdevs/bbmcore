@@ -11,7 +11,7 @@
     "homepage": "https://gitlab.com/apdevs/bbmcore",
     "keywords": ["APDevs", "Laravel", "Backbone", "Marionette", "Core"],
     "require": {
-        "illuminate/support": "~5"
+        "illuminate/support": ">=5.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~6.0",
