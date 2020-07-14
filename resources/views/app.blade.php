@@ -25,11 +25,7 @@
     </head>
 
     <body>
-        @if (config('app.env') == 'production')
-            <header id="header" class="clearfix" data-ma-theme="teal">
-        @else
-            <header id="header" class="clearfix" data-ma-theme="blue">
-        @endif
+        <header id="header" class="clearfix" data-ma-theme="{{ config('bbmcore.theme') }}">
             <ul class="h-inner">
                 <li class="hi-trigger ma-trigger" data-ma-action="sidebar-open" data-ma-target="#sidebar">
                     <div class="line-wrap">
@@ -63,7 +59,7 @@
                         </div>
 
                         <div class="sp-info">
-                            {{-- {{ Auth::user()->name }} --}}
+                            {{-- {{ auth()->user()->name }} --}}
                             User
 
                             <i class="zmdi zmdi-caret-down"></i>

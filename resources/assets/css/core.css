@@ -455,3 +455,19 @@ select.input-sm {
 .card .card-header .btn-new {
 	z-index: 13;
 }
+
+/*.THEMES */
+
+[data-ma-theme="red"] {
+  background-color: #F44336;
+}
+
+[data-ma-theme="red"] .ss-icon {
+  color: #F44336;
+}
+
+@media (max-width: 767px) {
+  [data-ma-theme="red"] .ha-menu {
+    background: #F44336;
+  }
+}
