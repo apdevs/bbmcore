@@ -56,6 +56,22 @@ define([
 	});
 
 	App.Collection = Backbone.Collection.extend({
+		sum: function (attr_name) {
+			return this.reduce(function (model) {
+				return sum + (parseFloat(model.get(attr_name)) || 0);
+			}, 0);
+		},
+
+		sumWhere: function (attr_name, whereClosure) {
+			return this.reduce(function (sum, model) {
+				if (whereClosure(model)) {
+					return sum + (parseFloat(model.get(attr_name)) || 0);
+				}
+
+				return sum;
+			}, 0);
+		},
+
 		toFullJSON: function () {
 			return this.map(function (model) {
 				return model.toFullJSON();
