@@ -41,6 +41,34 @@ function (bus, templates, swig, _, numeral, fecha, moment) {
 		}
 	});
 
+	function isFilled(input) {
+		return input != undefined && input != null && _.trim(input) != '';
+	}
+
+	function is(item, values) {
+		items = _.isArray(values) ? values : [values];
+
+		return _.contains(items, item);
+	}
+
+	swig.setFilter('isFilled', isFilled);
+
+	swig.setFilter('orDefault', function (input, defaultvalue) {
+		return isFilled(input) ? input : (defaultvalue || '');
+	});
+
+	swig.setFilter('is', is);
+
+	swig.setFilter('isAdminOrEmployee', function (user, values) {
+		if (user.type == 'employee' && user.employee) {
+			var position = user.employee.position;
+
+			return is(position, 'administrador') || is(position, values);
+		}
+
+		return user.type == 'developer';
+	});
+
 	swig.setFilter('short', function (input,n) { return input.short(n); });
 
 	swig.setFilter('fixed', function (input, n) {

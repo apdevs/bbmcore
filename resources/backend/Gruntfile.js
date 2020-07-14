@@ -28,7 +28,8 @@ module.exports = function (grunt) {
 			view:{},
 			collection:{},
 			model:{},
-			template:{}
+			template:{},
+			selector:{}
 		},
 		"swig-browser": {
 			frontTemplates: {
@@ -63,6 +64,7 @@ module.exports = function (grunt) {
 						'momentIs',
 						'contains',
 						'replace',
+						'unique',
 					]
 				},
 				files: {
