@@ -13,7 +13,7 @@
     "underscore.string": "^3.3.4",
     "package-script": "0.0.8"
   },
-  "scripts": {
+  "scriptsExample": {
     "install": "node frontinstaller.js && bower install && grunt templates"
   }
 }
