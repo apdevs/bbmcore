@@ -8,6 +8,85 @@ define([
 	'moment'
 ], function (bus, $, _, Marionette, Behaviors, Oscura, moment) {
 
+	Behaviors.Selector = Marionette.Behavior.extend({
+		ui: {
+			btnSlt: '.btn-slt',
+			btnClear: '.btn-slt-rm'
+		},
+
+		events: {
+			'click @ui.btnSlt': 'showSelector',
+			'click @ui.btnClear': 'cleanSelection'
+		},
+
+		initialize: function () {
+			var Selector = this.getOption('selector');
+			var options = this.getOptionResult('options');
+
+			this.selector = new Selector(options);
+
+			this.listenTo(this.selector, this.getOption('event_name'), this.onSelectItem);
+		},
+
+		showSelector: function () {
+			this.selector.show();
+			this.selector.fetchIfEmpty();
+		},
+
+		onSelectItem: function (selection, modal) {
+			if (! selection) {
+				return bus.alert.error('Selección incorrecta');
+			}
+
+			modal.close();
+			this.view.trigger(this.getOption('event_name'), selection, modal);
+		},
+
+		cleanSelection: function () {
+			this.selector.clearSelection();
+
+			this.view.trigger('selection:clear');
+		},
+
+		getOptionResult: function (option) {
+			var value = this.getOption(option);
+
+			if (_.isFunction(value))
+			{
+				return value.call(this.view, this.view.model);
+			}
+
+			return value;
+		},
+	});
+
+	Behaviors.Selectors = Marionette.Behavior.extend({
+		onRender: function () {
+			var self = this;
+
+			require(['core/sltbutton'], function (SltButton) {
+				_.each(self.getOption('items'), function (item) {
+					self.renderSelector(SltButton, item);
+				});
+			});
+		},
+
+		renderSelector: function (SltButton, item) {
+			var btnview = new SltButton(_.pick(item, [
+				'template',
+				'selector',
+				'options',
+				'event_name',
+				'inpname',
+				'parser'
+			]));
+
+			this.view
+				.addRegion(_.uniqueId('sltRegion'), item.region)
+				.show(btnview);
+		}
+	});
+
 	Behaviors.MaterialForm = Marionette.Behavior.extend({
 		ui: {
 			fgline: '.fg-line',
