@@ -72,14 +72,20 @@ define([
 		},
 
 		renderSelector: function (SltButton, item) {
-			var btnview = new SltButton(_.pick(item, [
+			var preselect = this.view.model.get(item.modelattr);
+
+			var options = _.pick(item, [
 				'template',
 				'selector',
 				'options',
 				'event_name',
 				'inpname',
 				'parser'
-			]));
+			]);
+
+			var btnview = new SltButton(_.extend(options, {
+				preselect: preselect
+			}));
 
 			this.view
 				.addRegion(_.uniqueId('sltRegion'), item.region)

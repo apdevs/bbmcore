@@ -26,10 +26,9 @@ function (bus, _, App) {
 			};
 		},
 
-		initialize: function () {
-			this.selection = null;
-
-			this.event_name = this.getOption('event_name');
+		initialize: function (options) {
+			this.selection = options.preselect;
+			this.event_name = options.event_name;
 
 			this.on(this.event_name, this.setSelection);
 			this.on('selection:clear', this.cleanSelection);
