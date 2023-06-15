@@ -104,7 +104,7 @@ function (bus, _, Backbone, Marionette, Validation, templates, alerts, User, Beh
 	Backbone.Collection.prototype.fetch = function (options) {
 		options = _.defaults(options || {}, {
 			reset: true,
-			cache: true
+			cache: false
 		});
 
 		return legacyFetch.call(this, options);

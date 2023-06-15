@@ -76,7 +76,7 @@
 			"bootstrap",
 			"formparams",
 			"daterange",
-			// "fetchcache",
+			"fetchcache",
 			'main'
 		]
 	};
