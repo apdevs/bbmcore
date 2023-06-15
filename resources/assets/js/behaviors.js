@@ -43,7 +43,9 @@ define([
 		},
 
 		cleanSelection: function () {
-			this.selector.clearSelection();
+			if (this.selector.isRendered) {
+				this.selector.clearSelection();
+			}
 
 			this.view.trigger('selection:clear');
 		},
