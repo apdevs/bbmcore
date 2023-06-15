@@ -57,7 +57,7 @@ define([
 
 	App.Collection = Backbone.Collection.extend({
 		sum: function (attr_name) {
-			return this.reduce(function (model) {
+			return this.reduce(function (sum, model) {
 				return sum + (parseFloat(model.get(attr_name)) || 0);
 			}, 0);
 		},

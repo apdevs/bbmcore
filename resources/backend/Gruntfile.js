@@ -65,6 +65,10 @@ module.exports = function (grunt) {
 						'contains',
 						'replace',
 						'unique',
+						'isFilled',
+						'orDefault',
+						'is',
+						'isAdminOrEmployee'
 					]
 				},
 				files: {

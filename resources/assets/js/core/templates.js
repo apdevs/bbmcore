@@ -14,6 +14,21 @@ function (bus, templates, swig, _, numeral, fecha, moment) {
 
 	var folder = '/templates/';
 
+	numeral.dinero = function (monto) {
+		return numeral(monto).format('$0,0.00');
+	};
+
+	numeral.cantidad = function (monto) {
+		return numeral(monto).format('0,0.[000]');
+	};
+
+	numeral.entero = function (monto) {
+		return numeral(monto).format('0,0');
+	};
+
+	moment.DATE_FORMAT = 'YYYY-MM-DD';
+	moment.FULLDATE_FORMAT = 'YYYY-MM-DD HH:mm';
+
 	swig.setDefaults({
 		cache: {
 			/** Bug, agregar nombre de modulo a "name" */
@@ -22,19 +37,15 @@ function (bus, templates, swig, _, numeral, fecha, moment) {
 
 				name = index >= 0 ? key.slice(index + folder.length) : key;
 
-				var tpl  = templates[name],
-					_tpl = templates.cache[name];
-
-				if (tpl) {
+				if (templates[name]) {
 					return function (data) {
-						return swig.run(tpl, data || {});
+						return swig.run(templates[name], data || {});
 					};
 				}
 
-				if (_tpl) return _tpl;
-
-				return null;
+				return templates.cache[name] || null;
 			},
+
 			set: function (key, val) {
 				templates.cache[key] = val;
 			}

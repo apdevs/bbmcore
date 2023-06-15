@@ -75,23 +75,32 @@ define([
 		},
 
 		renderSelector: function (SltButton, item) {
-			var preselect = this.view.model.get(item.modelattr);
+			var modelattr = item.modelattr;
+			var region = item.region ? item.region : modelattr+'-slt';
 
-			var options = _.pick(item, [
+			var preselect = this.view.model.get(modelattr);
+
+			var sltoptions = _.pick(item, [
 				'template',
 				'selector',
 				'options',
-				'event_name',
-				'inpname',
 				'parser'
 			]);
 
-			var btnview = new SltButton(_.extend(options, {
+			sltoptions.event_name = item.event_name ? item.event_name : 'select:'+modelattr;
+			sltoptions.inpname = item.inpname ? item.inpname : modelattr+'_id';
+			sltoptions.options =  sltoptions.options || {};
+
+			_.defaults(sltoptions.options, {
+				paginate: 5, creationable: true
+			});
+
+			var btnview = new SltButton(_.extend(sltoptions, {
 				preselect: preselect
 			}));
 
 			this.view
-				.addRegion(_.uniqueId('sltRegion'), item.region)
+				.addRegion(_.uniqueId('sltRegion'), region)
 				.show(btnview);
 		}
 	});

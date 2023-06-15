@@ -992,6 +992,7 @@ define(['msgBus', 'jquery', 'underscore', 'marionette', 'oscura'], function (bus
 		defaults: {
 			collection: 'collection',
 			collectionView: 'collectionView',
+			createEvent: 'create:model',
 			formView: 'formView',
 			formRegion: 'formRegion',
 			collectionRegion: 'collectionRegion',
@@ -1104,6 +1105,8 @@ define(['msgBus', 'jquery', 'underscore', 'marionette', 'oscura'], function (bus
 				this.hideFormRegion();
 
 				this.addModel(model);
+
+				this.view.trigger(this.getOption('createEvent'), model);
 			});
 		},
 

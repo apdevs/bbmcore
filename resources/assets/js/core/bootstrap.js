@@ -158,8 +158,7 @@ function (bus, _, Backbone, Marionette, Validation, templates, alerts, User, Beh
 	/**
 	 * Breadcrumbs
 	 */
-	var breadcrumbs = new Breadcrubms.Collection(),
-		ignoredCrumbs = ['alumno','empleado','developer','profesor','nivel'];
+	var breadcrumbs = new Breadcrubms.Collection();
 
 	bus.reqres.setHandler('get:breadcrumbs', function () {
 		return breadcrumbs;
@@ -179,8 +178,6 @@ function (bus, _, Backbone, Marionette, Validation, templates, alerts, User, Beh
 
 		_.each(bus.globals.getOrderly(), function(item, index) {
 			if (! _.isFunction(item.model.toCrumb)) return;
-
-			if (_.contains(ignoredCrumbs, item.name)) return;
 
 			models.push(_.defaults(item.model.toCrumb(), {
 				level: index
