@@ -45,7 +45,11 @@
     "animate.css": "^3.5.2",
     "flot": "#^0.8.3",
     "flot.curvedlines": "^1.1.1",
-    "eonasdan-bootstrap-datetimepicker": "^4.17.45"
+    "eonasdan-bootstrap-datetimepicker": "^4.17.45",
+    "trumbowyg": "^2.19.1",
+    "compressorjs": "fengyuanchen/compressorjs#^1.0.6",
+    "autosize": "^6.0.1",
+    "jquery.easy-pie-chart": "^2.1.6"
   },
   "resolutions": {
     "jquery": "1.9",

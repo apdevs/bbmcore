@@ -5,8 +5,9 @@ define([
 	'marionette',
 	'core/behaviors',
 	'oscura',
-	'moment'
-], function (bus, $, _, Marionette, Behaviors, Oscura, moment) {
+	'moment',
+	'autosize'
+], function (bus, $, _, Marionette, Behaviors, Oscura, moment, autosize) {
 
 	Behaviors.Selector = Marionette.Behavior.extend({
 		ui: {
@@ -98,7 +99,8 @@ define([
 	Behaviors.MaterialForm = Marionette.Behavior.extend({
 		ui: {
 			fgline: '.fg-line',
-			fgfloat: '.fg-float'
+			fgfloat: '.fg-float',
+			textareaAuto: 'textarea.auto-size'
 		},
 
 		onRender: function () {
@@ -116,6 +118,10 @@ define([
 						$this.closest('.fg-line').addClass('fg-toggled');
 					}
 				});
+			}
+
+			if (this.ui.textareaAuto[0]) {
+				autosize(this.ui.textareaAuto);
 			}
 		},
 
