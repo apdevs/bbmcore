@@ -12,8 +12,5 @@
     "grunt-legacy-util": "^1.0.0",
     "underscore.string": "^3.3.4",
     "package-script": "0.0.8"
-  },
-  "scriptsExample": {
-    "install": "node frontinstaller.js && bower install && grunt templates"
   }
 }
