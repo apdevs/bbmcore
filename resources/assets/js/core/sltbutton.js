@@ -46,7 +46,9 @@ function (bus, _, App) {
 
 		serializeData: function () {
 			if (! this.selection) {
-				return {};
+				return {
+					inpname: this.getOption('inpname')
+				};
 			}
 
 			var parser = this.getOption('parser');
